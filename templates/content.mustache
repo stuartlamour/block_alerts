@@ -1,0 +1,51 @@
+  <div class="alert alert-warning px-2 border-warning d-flex d-flex align-items-center justify-content-center" 
+  style="border: none; border-left: .25rem solid;">
+    <!-- Alerts icon. -->
+    <div>
+      <div class="text-warning d-flex d-flex align-items-center justify-content-center font-weight-bold rounded-circle" 
+      style="height: 30px; width: 30px; border: .25rem solid;">
+        !
+      </div>
+    </div>
+
+    <!-- Alerts carosel. -->
+    <div class="mx-3 flex-fill text-body">
+      <div id="block-alert-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+        {{#alerts}}
+        <div class="carousel-item {{#active}} active {{/active}}">
+            <div><small class="font-weight-normal">{{displaydate}}</small></div>
+            <div> {{description}} </div>
+        </div>
+        {{/alerts}}
+
+      </div>
+      </div>
+    </div>
+
+    {{#nav}}
+    <!-- Alerts next. -->
+    <div>
+        <a href="#block-alert-carousel" role="button" data-slide="next" class="btn btn-warning mr-2">
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        <span class="sr-only">{{#str}} next {{/str}}</span>
+      </a>
+    </div>
+    {{/nav}}
+
+</div>
+
+<!-- We use an inline style tag because moodle cannot process @ symbol in css files. -->
+<style>
+
+.block-alert-carousel .carousel-item {
+    transition: all .5s ease-in-out;
+    opacity: 0;
+}
+
+.block-alert-carousel .carousel-item.active {
+   opacity: 1;
+}
+
+</style>
