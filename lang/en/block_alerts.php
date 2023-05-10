@@ -18,7 +18,7 @@
  * Languages configuration for the block_alerts plugin.
  *
  * @package   block_alerts
- * @author    2023 Stuart Lamour
+ * @copyright    2023 Stuart Lamour
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,9 +27,11 @@ $string['alerts:addinstance'] = 'Add alerts block';
 $string['alerts:myaddinstance'] = 'Add alerts block';
 
 $string['blocktitle'] = 'Alerts block title';
-$string['configurealerts'] = "Edit global alerts items";
-$string['alertsitem'] = 'Alerts item';
+$string['configurealerts'] = "Edit global alert posts";
 $string['title'] = 'Title';
-$string['date'] = 'Date';
+$string['alertsitem'] = 'Alerts post';
+$string['date'] = 'Post date';
+$string['date_help'] = 'Post date sets the order of display, not the date it becomes visible.';
 $string['description'] = 'Description';
 $string['description_help'] = 'Short text, no more that 140 characters.';
+

@@ -18,10 +18,9 @@
  * Block definition class for the block_alerts plugin.
  *
  * @package   block_alerts
- * @author    2023 Stuart Lamour
+ * @copyright 2023 Stuart Lamour
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class block_alerts extends block_base {
 
     /**
@@ -34,6 +33,10 @@ class block_alerts extends block_base {
         $this->title = get_string('pluginname', 'block_alerts');
     }
 
+    /**
+     * Gets the block settings.
+     *
+     */
     function specialization() {
         if (isset($this->config->title)) {
             $this->title = $this->title = format_string($this->config->title, true, ['context' => $this->context]);
@@ -45,9 +48,9 @@ class block_alerts extends block_base {
     /**
      * Gets the block contents.
      *
-     * @return string The block HTML.
+     * @return stdClass - the block content.
      */
-    public function get_content() {
+    public function get_content() : stdClass {
         global $OUTPUT;
 
         if ($this->content !== null) {
@@ -60,10 +63,7 @@ class block_alerts extends block_base {
         $template = new stdClass();
         $template->alerts = $this->fetch_alerts();
         $itemcount = count($template->alerts);
-        
-        if ($itemcount) {
-            $template->hasalerts = true;
-        }
+
         if ($itemcount > 1) {
             $template->nav = true;
         }
@@ -75,21 +75,22 @@ class block_alerts extends block_base {
 
      /**
      *  Get the alerts.
-     * 
+     *
      * @return array alerts items.
      */
     public function fetch_alerts() : array {
         // Template data for mustache.
         $template = new stdClass();
-        
+
         // Get alerts items.
         for ($i = 1 ; $i < 4; $i++) {
             $alerts = new stdClass();
             $alerts->description = get_config('block_alerts', 'description'.$i);
+            $alerts->title = get_config('block_alerts', 'title'.$i);
             $alerts->date = get_config('block_alerts', 'date'.$i);
-            
+
             // Check alerts is populated.
-            if ($alerts->description) {
+            if ($alerts->title) {
                 // Format the date for display.
                 if($alerts->date) {
                     $alerts->displaydate = date_format(date_create($alerts->date),"jS M Y");
@@ -98,7 +99,7 @@ class block_alerts extends block_base {
                 // Make a temp key value array to sort.
                 // NOTE - index added to make keys unique.
                 $template->tempalerts[$alerts->date.'-'.$i] = $alerts;
-                
+
             }
         }
 
@@ -114,19 +115,19 @@ class block_alerts extends block_base {
         foreach ($template->tempalerts as $alerts) {
             $template->alerts[] = $alerts;
         }
-        
+
         // Set first element as active for carosel version.
         $template->alerts[0]->active = true;
 
-        return  $template->alerts; 
+        return  $template->alerts;
     }
 
     /**
-     * Defines in which pages this block can be added.
+     * Defines on which pages this block can be added.
      *
      * @return array of the pages where the block can be added.
      */
-    public function applicable_formats() {
+    public function applicable_formats() : array {
         return [
             'admin' => false,
             'site-index' => true,
@@ -136,11 +137,21 @@ class block_alerts extends block_base {
         ];
     }
 
-    public function instance_allow_multiple() {
+    /**
+     * Defines if the block can be added multiple times.
+     *
+     * @return bool.
+     */
+    public function instance_allow_multiple() : bool {
         return true;
     }
-
-    function has_config() {
+    /**
+     * Defines if the has config.
+     *
+     * @return bool.
+     */
+    public function has_config() : bool {
         return true;
     }
 }
+

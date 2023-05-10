@@ -18,17 +18,21 @@
  * Block definition class for the block_alerts plugin.
  *
  * @package   block_alerts
- * @author    2023 Stuart Lamour
+ * @copyright 2023 Stuart Lamour
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class block_alerts_edit_form extends block_edit_form {
 
+    /**
+     * Edit form.
+     *
+     * @param \MoodleQuickForm $mform the form being built.
+     */
     protected function specific_definition($mform) {
 
         // Fieldset.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
-        
+
         // Block title.
         $mform->addElement('text', 'config_title', get_string('blocktitle', 'block_alerts'));
         $mform->setType('config_title', PARAM_TEXT);
@@ -37,11 +41,7 @@ class block_alerts_edit_form extends block_edit_form {
         $href = new moodle_url('/admin/settings.php?section=blocksettingalerts');
         $text = get_string('configurealerts', 'block_alerts');
         $mform->addElement('html', '<p><a href="'.$href.'" >'.$text.'</a></p>');
-        
-        // TODO - Carousel or grid layout option?
     }
 
-    function set_data($defaults) {
-        parent::set_data($defaults);
-    }
 }
+

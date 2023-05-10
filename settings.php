@@ -32,7 +32,7 @@ if ($hassiteconfig) {
         $default = '';
 
         // Add 3 slots for alerts.
-        for ($i = 1 ; $i < 4; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             // Heading.
             $setting = new admin_setting_heading('h'.$i,
                 get_string('alertsitem', 'block_alerts'),
@@ -43,8 +43,17 @@ if ($hassiteconfig) {
             // Date.
             $setting = new admin_setting_date('block_alerts/date'.$i,
                 get_string('date', 'block_alerts'),
-                '', 
+                get_string('date_help', 'block_alerts'),
                 $default
+            );
+            $settings->add($setting);
+
+            // Title.
+            $setting = new admin_setting_configtext('block_alerts/title'.$i,
+                get_string('title', 'block_alerts'),
+                '',
+                $default,
+                PARAM_RAW
             );
             $settings->add($setting);
 
@@ -52,10 +61,12 @@ if ($hassiteconfig) {
             $setting = new admin_setting_configtext('block_alerts/description'.$i,
                 get_string('description', 'block_alerts'),
                 get_string('description_help', 'block_alerts'),
-                $default, 
+                $default,
                 PARAM_RAW
             );
             $settings->add($setting);
         }
     }
 }
+
+
