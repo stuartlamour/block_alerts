@@ -37,7 +37,7 @@ class block_alerts extends block_base {
      * Gets the block settings.
      *
      */
-    function specialization() {
+    public function specialization() {
         if (isset($this->config->title)) {
             $this->title = $this->title = format_string($this->config->title, true, ['context' => $this->context]);
         } else {
@@ -73,7 +73,7 @@ class block_alerts extends block_base {
         return $this->content;
     }
 
-     /**
+    /**
      *  Get the alerts.
      *
      * @return array alerts items.
@@ -83,7 +83,7 @@ class block_alerts extends block_base {
         $template = new stdClass();
 
         // Get alerts items.
-        for ($i = 1 ; $i < 4; $i++) {
+        for ($i = 1; $i < 4; $i++) {
             $alerts = new stdClass();
             $alerts->description = get_config('block_alerts', 'description'.$i);
             $alerts->title = get_config('block_alerts', 'title'.$i);
@@ -92,8 +92,8 @@ class block_alerts extends block_base {
             // Check alerts is populated.
             if ($alerts->title) {
                 // Format the date for display.
-                if($alerts->date) {
-                    $alerts->displaydate = date_format(date_create($alerts->date),"jS M Y");
+                if ($alerts->date) {
+                    $alerts->displaydate = date_format(date_create($alerts->date), "jS M Y");
                 }
 
                 // Make a temp key value array to sort.
