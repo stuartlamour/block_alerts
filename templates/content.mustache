@@ -1,8 +1,43 @@
-  <div class="alert alert-warning px-2 border-warning d-flex d-flex align-items-center justify-content-center" 
+  {{!
+    This file is part of Moodle - http://moodle.org/
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+
+{{!
+    @template blocks_alerts/content
+    Example context (json):
+    {
+        "nav": 1,
+        "alerts": [
+         {
+            "title": "This is the alert title",
+            "description": "This is the news description",
+            "active": 1
+         },
+         {
+            "title": "This is the alert title",
+            "description": "This is the news description",
+            "active": 0
+         }
+        ]
+
+    }
+}}
+
+<div class="alert alert-warning px-2 border-warning d-flex d-flex align-items-center justify-content-center"
   style="border: none; border-left: .25rem solid;">
     <!-- Alerts icon. -->
     <div>
-      <div class="text-warning d-flex d-flex align-items-center justify-content-center font-weight-bold rounded-circle" 
+      <div class="text-warning d-flex d-flex align-items-center justify-content-center font-weight-bold rounded-circle"
       style="height: 30px; width: 30px; border: .25rem solid;">
         !
       </div>
@@ -15,8 +50,8 @@
 
         {{#alerts}}
         <div class="carousel-item {{#active}} active {{/active}}">
-            <div><small class="font-weight-normal">{{displaydate}}</small></div>
-            <div> {{description}} </div>
+            <strong>{{title}}</strong>
+            <div>{{description}}</div>
         </div>
         {{/alerts}}
 
@@ -35,17 +70,3 @@
     {{/nav}}
 
 </div>
-
-<!-- We use an inline style tag because moodle cannot process @ symbol in css files. -->
-<style>
-
-.block-alert-carousel .carousel-item {
-    transition: all .5s ease-in-out;
-    opacity: 0;
-}
-
-.block-alert-carousel .carousel-item.active {
-   opacity: 1;
-}
-
-</style>

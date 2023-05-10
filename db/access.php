@@ -18,9 +18,11 @@
  * Plugin capabilities for the block_alerts plugin.
  *
  * @package   block_alerts
- * @author 2023 Stuart Lamour
+ * @copyright 2023 Stuart Lamour
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
 
 $capabilities = [
     'block/alerts:myaddinstance' => [
@@ -42,3 +44,4 @@ $capabilities = [
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
     ],
 ];
+
