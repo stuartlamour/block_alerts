@@ -64,10 +64,17 @@ class block_alerts extends block_base {
         $template->alerts = $this->fetch_alerts();
         $itemcount = count($template->alerts);
 
+        // Hide the block when no content.
+        if (!$itemcount) {
+            return $this->content;
+        }
+
+        // Set flag if we need to show navigation (when more than one alert).
         if ($itemcount > 1) {
             $template->nav = true;
         }
-        // TODO - what should the block output if no alerts?
+
+        // Render from template.
         $this->content->text = $OUTPUT->render_from_template('block_alerts/content', $template);
 
         return $this->content;
