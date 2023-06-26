@@ -95,6 +95,8 @@ class block_alerts extends block_base {
             $alerts->description = get_config('block_alerts', 'description'.$i);
             $alerts->title = get_config('block_alerts', 'title'.$i);
             $alerts->date = get_config('block_alerts', 'date'.$i);
+            $alerts->link = get_config('block_alerts', 'link'.$i);
+            $alerts->linktext = get_config('block_alerts', 'linktext'.$i);
 
             // Check alerts is populated.
             if ($alerts->title) {

@@ -21,11 +21,15 @@
          {
             "title": "This is the alert title",
             "description": "This is the news description",
+            "link": "https://moodle.com/",
+            "linktext": "Visit moodle.com",
             "active": 1
          },
          {
             "title": "This is the alert title",
             "description": "This is the news description",
+            "link": "https://moodle.com/",
+            "linktext": "Visit moodle.com",
             "active": 0
          }
         ]
@@ -51,7 +55,11 @@
         {{#alerts}}
         <div class="carousel-item {{#active}} active {{/active}}">
             <strong>{{title}}</strong>
-            <div>{{description}}</div>
+            <div>{{description}}
+                  {{#linktext}}
+                  <a href="{{link}}" target="_blank">{{linktext}}</a>
+                  {{/linktext}}
+            </div>
         </div>
         {{/alerts}}
 

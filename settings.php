@@ -65,6 +65,24 @@ if ($hassiteconfig) {
                 PARAM_RAW
             );
             $settings->add($setting);
+
+            // Link.
+            $setting = new admin_setting_configtext('block_alerts/link'.$i,
+                get_string('link', 'block_alerts'),
+                get_string('link_help', 'block_alerts'),
+                $default,
+                PARAM_RAW
+            );
+            $settings->add($setting);
+
+            // Link text.
+            $setting = new admin_setting_configtext('block_alerts/linktext'.$i,
+                get_string('linktext', 'block_alerts'),
+                get_string('linktext_help', 'block_alerts'),
+                $default,
+                PARAM_RAW
+            );
+            $settings->add($setting);
         }
     }
 }
