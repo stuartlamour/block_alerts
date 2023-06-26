@@ -34,4 +34,9 @@ $string['date'] = 'Post date';
 $string['date_help'] = 'Post date sets the order of display, not the date it becomes visible.';
 $string['description'] = 'Description';
 $string['description_help'] = 'Short text, no more that 140 characters.';
+$string['link'] = 'Link';
+$string['link_help'] = 'Optional link url, opens in a new tab.';
+$string['linktext'] = 'Link text';
+$string['linktext_help'] = 'A meaningful link title. Do not use inaccessible link text such as "click here" or "read more".';
+
 
