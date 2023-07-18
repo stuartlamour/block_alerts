@@ -57,4 +57,3 @@ class admin_setting_date extends \admin_setting_configtext {
                     $this->description, true, '', $default, $query);
     }
 }
-

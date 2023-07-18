@@ -29,19 +29,18 @@ class block_alerts extends block_base {
      * @return void
      */
     public function init() {
-        global $USER;
         $this->title = get_string('pluginname', 'block_alerts');
     }
 
     /**
      * Gets the block settings.
      *
+     * @return void
      */
     public function specialization() {
-        if (isset($this->config->title)) {
-            $this->title = $this->title = format_string($this->config->title, true, ['context' => $this->context]);
-        } else {
-            $this->title = get_string('pluginname', 'block_alerts');
+        // Check if the title is empty.
+        if (!empty($this->config->title)) {
+            $this->title = format_string($this->config->title, true, ['context' => $this->context]);
         }
     }
 
@@ -108,7 +107,6 @@ class block_alerts extends block_base {
                 // Make a temp key value array to sort.
                 // NOTE - index added to make keys unique.
                 $template->tempalerts[$alerts->date.'-'.$i] = $alerts;
-
             }
         }
 
@@ -125,10 +123,10 @@ class block_alerts extends block_base {
             $template->alerts[] = $alerts;
         }
 
-        // Set first element as active for carosel version.
+        // Set first element as active for carousel version.
         $template->alerts[0]->active = true;
 
-        return  $template->alerts;
+        return $template->alerts;
     }
 
     /**
@@ -154,6 +152,7 @@ class block_alerts extends block_base {
     public function instance_allow_multiple() : bool {
         return true;
     }
+
     /**
      * Defines if the has config.
      *
