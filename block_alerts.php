@@ -41,6 +41,10 @@ class block_alerts extends block_base {
         // Check if the title is empty.
         if (!empty($this->config->title)) {
             $this->title = format_string($this->config->title, true, ['context' => $this->context]);
+        } else {
+            // Don't show the block title, unless one is set.
+            // We output the title as part of the block.
+            $this->title = '';
         }
     }
 
