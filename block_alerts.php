@@ -115,7 +115,7 @@ class block_alerts extends block_base {
 
         // Return if no alerts.
         if (!isset($template->tempalerts)) {
-            return array();
+            return [];
         }
 
         // Sort alerts items by date for output.
