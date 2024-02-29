@@ -52,7 +52,7 @@ class block_alerts extends block_base {
      *
      * @return stdClass - the block content.
      */
-    public function get_content() : stdClass {
+    public function get_content(): stdClass {
         global $OUTPUT;
 
         if ($this->content !== null) {
@@ -87,7 +87,7 @@ class block_alerts extends block_base {
      *
      * @return array alerts items.
      */
-    public function fetch_alerts() : array {
+    public function fetch_alerts(): array {
         // Template data for mustache.
         $template = new stdClass();
 
@@ -137,7 +137,7 @@ class block_alerts extends block_base {
      *
      * @return array of the pages where the block can be added.
      */
-    public function applicable_formats() : array {
+    public function applicable_formats(): array {
         return [
             'admin' => false,
             'site-index' => true,
@@ -152,7 +152,7 @@ class block_alerts extends block_base {
      *
      * @return bool.
      */
-    public function instance_allow_multiple() : bool {
+    public function instance_allow_multiple(): bool {
         return true;
     }
 
@@ -161,7 +161,7 @@ class block_alerts extends block_base {
      *
      * @return bool.
      */
-    public function has_config() : bool {
+    public function has_config(): bool {
         return true;
     }
 }
