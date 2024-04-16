@@ -23,11 +23,12 @@
  */
 
 $string['pluginname'] = 'Alerts';
+$string['blocktitle'] = 'Alert block title';
 $string['alerts:addinstance'] = 'Add alerts block';
 $string['alerts:myaddinstance'] = 'Add alerts block';
 $string['privacy:metadata'] = 'Alerts does not store any personal data.';
 
-$string['blocktitle'] = 'Alert block title';
+/* Settings strings. */
 $string['configurealerts'] = "Edit global alert posts";
 $string['title'] = 'Title';
 $string['description'] = 'Description';
