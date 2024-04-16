@@ -27,12 +27,9 @@ $string['alerts:addinstance'] = 'Add alerts block';
 $string['alerts:myaddinstance'] = 'Add alerts block';
 $string['privacy:metadata'] = 'Alerts does not store any personal data.';
 
-$string['blocktitle'] = 'Alerts block title';
+$string['blocktitle'] = 'Alert block title';
 $string['configurealerts'] = "Edit global alert posts";
 $string['title'] = 'Title';
-$string['alertsitem'] = 'Alerts post';
-$string['date'] = 'Post date';
-$string['date_help'] = 'Post date sets the order of display, not the date it becomes visible.';
 $string['description'] = 'Description';
 $string['description_help'] = 'Short text, no more that 140 characters.';
 $string['link'] = 'Link';
