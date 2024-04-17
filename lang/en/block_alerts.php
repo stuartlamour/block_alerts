@@ -18,7 +18,7 @@
  * Languages configuration for the block_alerts plugin.
  *
  * @package   block_alerts
- * @copyright    2023 Stuart Lamour
+ * @copyright 2023 Stuart Lamour
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,7 +28,7 @@ $string['alerts:addinstance'] = 'Add alerts block';
 $string['alerts:myaddinstance'] = 'Add alerts block';
 $string['privacy:metadata'] = 'Alerts does not store any personal data.';
 
-/* Settings strings. */
+// Settings strings.
 $string['configurealerts'] = "Edit global alert posts";
 $string['title'] = 'Title';
 $string['description'] = 'Description';
