@@ -63,17 +63,12 @@ class block_alerts extends block_base {
         $this->content->footer = '';
 
         $template = new stdClass();
-        $template->alerts = $this->fetch_alerts();
-        $itemcount = count($template->alerts);
+        $template->alert = $this->fetch_alert();
+        $itemcount = count($template->alert);
 
         // Hide the block when no content.
         if (!$itemcount) {
             return $this->content;
-        }
-
-        // Set flag if we need to show navigation (when more than one alert).
-        if ($itemcount > 1) {
-            $template->nav = true;
         }
 
         // Render from template.
@@ -87,49 +82,27 @@ class block_alerts extends block_base {
      *
      * @return array alerts items.
      */
-    public function fetch_alerts(): array {
+    public function fetch_alert(): array {
         // Template data for mustache.
         $template = new stdClass();
 
-        // Get alerts items.
-        for ($i = 1; $i < 4; $i++) {
-            $alerts = new stdClass();
-            $alerts->description = get_config('block_alerts', 'description'.$i);
-            $alerts->title = get_config('block_alerts', 'title'.$i);
-            $alerts->date = get_config('block_alerts', 'date'.$i);
-            $alerts->link = get_config('block_alerts', 'link'.$i);
-            $alerts->linktext = get_config('block_alerts', 'linktext'.$i);
+        // Get alert content.
+        $alert = new stdClass();
+        $alert->description = get_config('block_alerts', 'description');
+        $alert->title = get_config('block_alerts', 'title');
+        $alert->link = get_config('block_alerts', 'link');
+        $alert->linktext = get_config('block_alerts', 'linktext');
 
-            // Check alerts is populated.
-            if ($alerts->title) {
-                // Format the date for display.
-                if ($alerts->date) {
-                    $alerts->displaydate = date_format(date_create($alerts->date), "jS M Y");
-                }
-
-                // Make a temp key value array to sort.
-                // NOTE - index added to make keys unique.
-                $template->tempalerts[$alerts->date.'-'.$i] = $alerts;
-            }
+        // Check alerts is populated.
+        if ($alert->title) {
+            $template->alert[] = $alert;
+            return $template->alert;
         }
 
         // Return if no alerts.
-        if (!isset($template->tempalerts)) {
+        if (!isset($template->alert)) {
             return [];
         }
-
-        // Sort alerts items by date for output.
-        krsort($template->tempalerts);
-
-        // Add sorted array to template.
-        foreach ($template->tempalerts as $alerts) {
-            $template->alerts[] = $alerts;
-        }
-
-        // Set first element as active for carousel version.
-        $template->alerts[0]->active = true;
-
-        return $template->alerts;
     }
 
     /**

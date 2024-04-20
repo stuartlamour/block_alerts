@@ -16,60 +16,30 @@
     @template blocks_alerts/content
     Example context (json):
     {
-        "nav": 1,
-        "alerts": [
+        "alert": [
          {
             "title": "This is the alert title",
             "description": "This is the news description",
             "link": "https://moodle.com/",
-            "linktext": "Visit moodle.com",
-            "active": 1
-         },
-         {
-            "title": "This is the alert title",
-            "description": "This is the news description",
-            "link": "https://moodle.com/",
-            "linktext": "Visit moodle.com",
-            "active": 0
+            "linktext": "Visit moodle.com"
          }
         ]
-
     }
 }}
 
-<div class="alert alert-info px-2 border-info d-flex d-flex align-items-center justify-content-center"
-  style="border: none; border-left: .5rem solid;">
-    <!-- Alerts icon. -->
+<div role="alert" class="alert alert-info px-2 border-info d-flex align-items-center"
+  style="border: none; border-left: .5rem solid;" >
+    <!-- Alert icon. -->
     <i class="fa-solid fa-triangle-exclamation fa-2xl text-primary ml-2"></i>
-
-    <!-- Alerts carosel. -->
-    <div class="mx-3 flex-fill text-body">
-      <div id="block-alert-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-
-        {{#alerts}}
-        <div class="carousel-item {{#active}} active {{/active}}">
-            <strong>{{title}}</strong>
-            <div>{{description}}
-                  {{#linktext}}
-                  <a href="{{link}}" target="_blank">{{linktext}}</a>
-                  {{/linktext}}
-            </div>
+    <!-- Alert content. -->
+    {{#alert}}
+    <div class="ml-3">
+        <strong>{{title}}</strong>
+        <div>{{description}}
+          {{#linktext}}
+          <a href="{{link}}" target="_blank">{{linktext}}</a>
+          {{/linktext}}
         </div>
-        {{/alerts}}
-
-      </div>
-      </div>
     </div>
-
-    {{#nav}}
-    <!-- Alerts next. -->
-    <div>
-        <a href="#block-alert-carousel" role="button" data-slide="next" class="btn btn-primary mr-2">
-          <i class="fa fa-chevron-right text-white" aria-hidden="true"></i>
-          <span class="sr-only">{{#str}} next {{/str}}</span>
-        </a>
-    </div>
-    {{/nav}}
-
+    {{/alert}}
 </div>
