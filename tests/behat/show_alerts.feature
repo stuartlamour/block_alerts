@@ -10,10 +10,10 @@ Feature: Show alerts
       | alerts      | System       | 1          | site-index      | side-pre      |
     And the following config values are set as admin:
       | config                  | value                           | plugin        |
-      | title1                  | Alert Title One                 | block_alerts  |
-      | description1            | Alert Description One           | block_alerts  |
-      | link1                   | https://nasa.gov                | block_alerts  |
-      | linktext1               | Alert Link One                  | block_alerts  |
+      | title                   | Alert Title One                 | block_alerts  |
+      | description             | Alert Description One           | block_alerts  |
+      | link                    | https://nasa.gov                | block_alerts  |
+      | linktext                | Alert Link One                  | block_alerts  |
 
   Scenario: See news as intended and check the links lead to the intended websites.
     When I am on site homepage
