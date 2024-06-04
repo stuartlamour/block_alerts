@@ -22,18 +22,16 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Alerts';
-$string['blocktitle'] = 'Alert block title';
 $string['alerts:addinstance'] = 'Add alerts block';
 $string['alerts:myaddinstance'] = 'Add alerts block';
-$string['privacy:metadata'] = 'Alerts does not store any personal data.';
-
-// Settings strings.
+$string['blocktitle'] = 'Alert block title';
 $string['configurealerts'] = "Edit global alert posts";
-$string['title'] = 'Title';
 $string['description'] = 'Description';
 $string['description_help'] = 'Short text, no more that 140 characters.';
 $string['link'] = 'Link';
 $string['link_help'] = 'Optional link url, opens in a new tab.';
 $string['linktext'] = 'Link text';
 $string['linktext_help'] = 'A meaningful link title. Do not use inaccessible link text such as "click here" or "read more".';
+$string['pluginname'] = 'Alerts';
+$string['privacy:metadata'] = 'Alerts does not store any personal data.';
+$string['title'] = 'Title';
