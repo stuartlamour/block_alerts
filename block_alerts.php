@@ -77,7 +77,7 @@ class block_alerts extends block_base {
         return $this->content;
     }
 
-     /**
+    /**
      * Return if user has archetype editingteacher.
      *
      */
@@ -104,9 +104,9 @@ class block_alerts extends block_base {
     public function fetch_alert(): array {
         // Staff only check.
         if (get_config('block_alerts', 'staffonly')) {
-           if (!self::is_teacher()) {
-            return []; // Don't ouput for learners.
-           }
+            if (!self::is_teacher()) {
+                return []; // Don't ouput for learners.
+            }
         }
 
         // Template data for mustache.
