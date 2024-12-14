@@ -114,7 +114,6 @@ class block_alerts extends block_base {
 
         // Get alert content.
         $alert = new stdClass();
-        $alert->staffonly = get_config('block_alerts', 'staffonly');
         $alert->title = get_config('block_alerts', 'title');
         $alert->description = get_config('block_alerts', 'description');
         $alert->link = get_config('block_alerts', 'link');
