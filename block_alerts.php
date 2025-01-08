@@ -83,6 +83,17 @@ class block_alerts extends block_base {
      */
     public static function is_teacher(): bool {
         global $DB, $USER;
+
+        // System level roles.
+        $context = context_system::instance();
+        $roles = get_user_roles($context, $USER->id);
+        // Check for manager or coursecreator role.
+        foreach ($roles as $role) {
+            if ($role->shortname === 'manager' || $role->shortname === 'coursecreator') {
+                return true;
+            }
+        }
+
         // Get id's from role where archetype is editingteacher.
         $roles = $DB->get_fieldset('role', 'id', ['archetype' => 'editingteacher']);
 
@@ -103,10 +114,8 @@ class block_alerts extends block_base {
      */
     public function fetch_alert(): array {
         // Staff only check.
-        if (get_config('block_alerts', 'staffonly')) {
-            if (!self::is_teacher()) {
-                return []; // Don't ouput for learners.
-            }
+        if (get_config('block_alerts', 'staffonly') && !self::is_teacher()) {
+            return [];
         }
 
         // Template data for mustache.

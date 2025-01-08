@@ -40,7 +40,7 @@ if ($hassiteconfig) {
             '',
             $default,
             PARAM_RAW,
-            '140'
+            '60'
         );
         $settings->add($setting);
 
@@ -50,7 +50,7 @@ if ($hassiteconfig) {
             get_string('description_help', 'block_alerts'),
             $default,
             PARAM_RAW,
-            '140'
+            '60'
         );
         $settings->add($setting);
 
@@ -60,6 +60,7 @@ if ($hassiteconfig) {
             get_string('link_help', 'block_alerts'),
             $default,
             PARAM_RAW,
+            '60'
         );
         $settings->add($setting);
 
@@ -68,7 +69,8 @@ if ($hassiteconfig) {
             get_string('linktext', 'block_alerts'),
             get_string('linktext_help', 'block_alerts'),
             $default,
-            PARAM_RAW
+            PARAM_RAW,
+            '60'
         );
         $settings->add($setting);
 
