@@ -78,7 +78,7 @@ class block_alerts extends block_base {
     }
 
     /**
-     * Return if user has archetype editingteacher.
+     * Return if user has archetype editingteacher or system manager/coursecreator role.
      *
      */
     public static function is_teacher(): bool {
