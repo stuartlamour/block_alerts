@@ -84,11 +84,8 @@ class block_alerts extends block_base {
     public static function is_teacher(): bool {
         global $DB, $USER;
 
-        // System level roles.
-        $context = context_system::instance();
-        $roles = get_user_roles($context, $USER->id);
         // Check for manager or coursecreator role.
-        foreach ($roles as $role) {
+        foreach (get_user_roles(context_system::instance()) as $role) {
             if ($role->shortname === 'manager' || $role->shortname === 'coursecreator') {
                 return true;
             }
