@@ -34,5 +34,5 @@ $string['linktext'] = 'Link text';
 $string['linktext_help'] = 'A meaningful link title. Do not use inaccessible link text such as "click here" or "read more".';
 $string['pluginname'] = 'Alerts';
 $string['privacy:metadata'] = 'Alerts does not store any personal data.';
-$string['staffonly'] = "Staff only";
+$string['staffonly'] = "Only visible to staff";
 $string['title'] = 'Title';
