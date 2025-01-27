@@ -78,18 +78,50 @@ class block_alerts extends block_base {
     }
 
     /**
+     * Return if user has archetype editingteacher or system manager/coursecreator role.
+     *
+     */
+    public static function is_teacher(): bool {
+        global $DB, $USER;
+
+        // Check for manager or coursecreator role.
+        foreach (get_user_roles(context_system::instance()) as $role) {
+            if ($role->shortname === 'manager' || $role->shortname === 'coursecreator') {
+                return true;
+            }
+        }
+
+        // Get id's from role where archetype is editingteacher.
+        $roles = $DB->get_fieldset('role', 'id', ['archetype' => 'editingteacher']);
+
+        // Check if user has editingteacher role on any courses.
+        list($roles, $params) = $DB->get_in_or_equal($roles, SQL_PARAMS_NAMED);
+        $params['userid'] = $USER->id;
+        $sql = "SELECT id
+                FROM {role_assignments}
+                WHERE userid = :userid
+                AND roleid $roles";
+        return  $DB->record_exists_sql($sql, $params);
+    }
+
+    /**
      *  Get the alerts.
      *
      * @return array alerts items.
      */
     public function fetch_alert(): array {
+        // Staff only check.
+        if (get_config('block_alerts', 'staffonly') && !self::is_teacher()) {
+            return [];
+        }
+
         // Template data for mustache.
         $template = new stdClass();
 
         // Get alert content.
         $alert = new stdClass();
-        $alert->description = get_config('block_alerts', 'description');
         $alert->title = get_config('block_alerts', 'title');
+        $alert->description = get_config('block_alerts', 'description');
         $alert->link = get_config('block_alerts', 'link');
         $alert->linktext = get_config('block_alerts', 'linktext');
 

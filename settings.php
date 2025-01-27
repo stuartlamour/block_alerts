@@ -29,12 +29,18 @@ if ($hassiteconfig) {
 
         $default = '';
 
+        // Staff only.
+        $setting = new admin_setting_configcheckbox('block_alerts/staffonly',
+            get_string('staffonly', 'block_alerts'), '', 0);
+        $settings->add($setting);
+
         // Title.
         $setting = new admin_setting_configtext('block_alerts/title',
             get_string('title', 'block_alerts'),
             '',
             $default,
-            PARAM_RAW
+            PARAM_RAW,
+            '60'
         );
         $settings->add($setting);
 
@@ -43,7 +49,8 @@ if ($hassiteconfig) {
             get_string('description', 'block_alerts'),
             get_string('description_help', 'block_alerts'),
             $default,
-            PARAM_RAW
+            PARAM_RAW,
+            '60'
         );
         $settings->add($setting);
 
@@ -52,7 +59,8 @@ if ($hassiteconfig) {
             get_string('link', 'block_alerts'),
             get_string('link_help', 'block_alerts'),
             $default,
-            PARAM_RAW
+            PARAM_RAW,
+            '60'
         );
         $settings->add($setting);
 
@@ -61,7 +69,8 @@ if ($hassiteconfig) {
             get_string('linktext', 'block_alerts'),
             get_string('linktext_help', 'block_alerts'),
             $default,
-            PARAM_RAW
+            PARAM_RAW,
+            '60'
         );
         $settings->add($setting);
 
